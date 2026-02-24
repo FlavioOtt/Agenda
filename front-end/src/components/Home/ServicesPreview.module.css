@@ -1,0 +1,167 @@
+/* src/components/Home/ServicesPreview.module.css */
+.section {
+  padding: 80px 0;
+  background: #FAFAFA;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  color: #2D2D2D;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  color: #757575;
+  font-size: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.cardImage {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.card:hover .cardImage img {
+  transform: scale(1.1);
+}
+
+.cardIcon {
+  position: absolute;
+  bottom: -25px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #D4AF37;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 20px;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+}
+
+.cardContent {
+  padding: 30px 20px 20px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2D2D2D;
+  margin-bottom: 15px;
+}
+
+.cardDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.duration {
+  color: #757575;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.price {
+  color: #D4AF37;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.cardBtn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #D4AF37;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.cardBtn:hover {
+  background: #C5A028;
+}
+
+.viewAll {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.viewAllBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #D4AF37;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  transition: gap 0.3s;
+}
+
+.viewAllBtn:hover {
+  gap: 15px;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .title {
+    font-size: 30px;
+  }
+}

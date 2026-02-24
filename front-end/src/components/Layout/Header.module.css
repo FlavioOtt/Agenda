@@ -1,0 +1,125 @@
+/* src/components/Layout/Header.module.css */
+.header {
+  background: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2D2D2D;
+}
+
+.logo span {
+  color: #D4AF37;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #2D2D2D;
+  font-weight: 700;
+  font-size: 14px;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav a:hover {
+  color: #D4AF37;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #D4AF37;
+  transition: width 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.ctaButton {
+  background: #D4AF37;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.ctaButton:hover {
+  background: #C5A028;
+}
+
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #2D2D2D;
+}
+
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  padding: 20px;
+  background: #FFFFFF;
+  border-top: 1px solid #E0E0E0;
+}
+
+.mobileMenu a {
+  padding: 12px 0;
+  text-decoration: none;
+  color: #2D2D2D;
+  font-weight: 700;
+  border-bottom: 1px solid #FAFAFA;
+}
+
+.mobileCta {
+  background: #D4AF37;
+  color: white !important;
+  text-align: center;
+  border-radius: 4px;
+  margin-top: 10px;
+  border: none !important;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .nav, .ctaButton {
+    display: none;
+  }
+  
+  .menuToggle {
+    display: block;
+  }
+  
+  .mobileMenu {
+    display: flex;
+  }
+}

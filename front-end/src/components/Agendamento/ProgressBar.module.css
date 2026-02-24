@@ -1,0 +1,68 @@
+/* src/components/Agendamento/ProgressBar.module.css */
+.progressBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stepNumber {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #E0E0E0;
+  color: #757575;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+  transition: all 0.3s;
+}
+
+.step.active .stepNumber {
+  background: #D4AF37;
+  color: white;
+}
+
+.stepLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: #757575;
+}
+
+.step.active .stepLabel {
+  color: #D4AF37;
+}
+
+.line {
+  width: 80px;
+  height: 2px;
+  background: #E0E0E0;
+  margin: 0 10px;
+  margin-bottom: 20px;
+  transition: background 0.3s;
+}
+
+.line.active {
+  background: #D4AF37;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .line {
+    width: 40px;
+  }
+  
+  .stepLabel {
+    font-size: 10px;
+  }
+}
