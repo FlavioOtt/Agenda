@@ -1,5 +1,8 @@
 // src/components/Home/HomePage.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import servicoService from '../../services/servicoService';
+import profissionalService from '../../services/profissionalService';
 import Header from '../Layout/Header';
 import Footer from '../Layout/Footer';
 import Hero from './Hero';
@@ -11,13 +14,53 @@ import Location from './Location';
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
+  const [services, setServices] = useState([]);
+  const [professionals, setProfessionals] = useState([]);
+  const [loadingServices, setLoadingServices] = useState(true);
+  const [loadingProf, setLoadingProf] = useState(true);
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    try {
+      // Carregar serviços em destaque (4 primeiros)
+      const servicosData = await servicoService.getAll();
+      setServices(servicosData.slice(0, 4));
+    } catch (error) {
+      console.error('Erro ao carregar serviços:', error);
+    } finally {
+      setLoadingServices(false);
+    }
+
+    try {
+      // Carregar profissionais
+      const profData = await profissionalService.getAll();
+      setProfessionals(profData);
+    } catch (error) {
+      console.error('Erro ao carregar profissionais:', error);
+    } finally {
+      setLoadingProf(false);
+    }
+  };
+
   return (
     <div className={styles.home}>
       <Header />
       <main>
         <Hero />
-        <ServicesPreview />
-        <About />
+        
+        <ServicesPreview 
+          services={services} 
+          loading={loadingServices} 
+        />
+        
+        <About 
+          professionals={professionals}
+          loading={loadingProf}
+        />
+        
         <Gallery />
         <Testimonials />
         <Location />

@@ -1,0 +1,121 @@
+/* src/components/Admin/LoginAdmin.module.css */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2D2D2D 0%, #404040 100%);
+  padding: 20px;
+}
+
+.loginBox {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2D2D2D;
+}
+
+.logo span {
+  color: #D4AF37;
+}
+
+.loginBox h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  text-align: center;
+  color: #2D2D2D;
+  margin-bottom: 5px;
+}
+
+.loginBox p {
+  text-align: center;
+  color: #757575;
+  margin-bottom: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.error {
+  background: #F8D7DA;
+  color: #721C24;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2D2D2D;
+}
+
+.formGroup input {
+  padding: 14px;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.submitBtn {
+  background: #D4AF37;
+  color: #FFFFFF;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submitBtn:hover {
+  background: #C5A028;
+}
+
+.submitBtn:disabled {
+  background: #E0E0E0;
+  cursor: not-allowed;
+}
+
+.backLink {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  color: #757575;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.backLink:hover {
+  color: #D4AF37;
+}
