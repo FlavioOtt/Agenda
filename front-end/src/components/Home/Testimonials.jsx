@@ -1,6 +1,7 @@
 // src/components/Home/Testimonials.jsx
 import React, { useState, useEffect } from 'react';
-import styles from './Testimonials.module.css';
+// Tailwind CSS
+
 
 const testimonials = [
   {
@@ -56,35 +57,38 @@ const Testimonials = () => {
   };
 
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>O que Nossas Clientes Dizem</h2>
-          <p className={styles.subtitle}>
+<section className="py-20 bg-gradient-to-br from-text-main to-gray-800">
+      <div className="max-w-4xl mx-auto px-5">
+        <div className="text-center mb-14">
+          <h2 className="font-playfair text-[40px] text-white mb-4">O que Nossas Clientes Dizem</h2>
+          <p className="text-gray-400 text-lg max-w-xl mx-auto">
             A satisfação de vocês é a nossa maior recompensa
           </p>
         </div>
 
-        <div className={styles.slider}>
-          <div 
-            className={styles.track}
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
+        <div className="relative overflow-hidden">
+          <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className={styles.slide}>
-                <div className={styles.card}>
-                  <div className={styles.quoteIcon}>
+              <div key={testimonial.id} className="min-w-full px-2.5">
+                <div className="bg-white rounded-3xl p-10 shadow-2xl text-center mx-auto max-w-2xl">
+                  <div className="text-primary text-3xl mb-5">
                     <i className="fa-solid fa-quote-left"></i>
                   </div>
-                  <p className={styles.text}>{testimonial.text}</p>
-                  <div className={styles.rating}>
+                  <p className="text-xl leading-relaxed italic text-text-main mb-6 font-medium">
+                    "{testimonial.text}"
+                  </p>
+                  <div className="flex items-center justify-center mb-6 gap-3">
                     {renderStars(testimonial.rating)}
                   </div>
-                  <div className={styles.author}>
-                    <img src={testimonial.photo} alt={testimonial.name} />
+                  <div className="flex items-center justify-center gap-4">
+                    <img 
+                      src={testimonial.photo} 
+                      alt={testimonial.name} 
+                      className="w-16 h-16 rounded-full object-cover ring-4 ring-primary ring-offset-transparent"
+                    />
                     <div>
-                      <h4>{testimonial.name}</h4>
-                      <span>{testimonial.service}</span>
+                      <h4 className="font-bold text-lg text-text-main">{testimonial.name}</h4>
+                      <span className="text-text-secondary text-sm">{testimonial.service}</span>
                     </div>
                   </div>
                 </div>
@@ -93,26 +97,30 @@ const Testimonials = () => {
           </div>
 
           {/* Controles */}
-          <div className={styles.controls}>
+          <div className="flex items-center justify-center gap-5 mt-12">
             <button 
-              className={styles.controlBtn}
+              className="w-12 h-12 rounded-full border-2 border-white/30 bg-transparent text-white hover:bg-primary hover:border-primary transition-all flex items-center justify-center"
               onClick={() => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
             >
               <i className="fa-solid fa-chevron-left"></i>
             </button>
             
-            <div className={styles.dots}>
+            <div className="flex gap-2.5">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  className={`${styles.dot} ${index === currentIndex ? styles.active : ''}`}
+                  className={`w-[10px] h-[10px] rounded-full transition-all ${
+                    index === currentIndex 
+                      ? 'w-8 bg-primary rounded-lg' 
+                      : 'bg-white/30 hover:bg-white/50'
+                  }`}
                   onClick={() => goToSlide(index)}
-                ></button>
+                />
               ))}
             </div>
 
             <button 
-              className={styles.controlBtn}
+              className="w-12 h-12 rounded-full border-2 border-white/30 bg-transparent text-white hover:bg-primary hover:border-primary transition-all flex items-center justify-center"
               onClick={() => setCurrentIndex((prev) => (prev + 1) % testimonials.length)}
             >
               <i className="fa-solid fa-chevron-right"></i>
@@ -121,6 +129,7 @@ const Testimonials = () => {
         </div>
       </div>
     </section>
+
   );
 };
 

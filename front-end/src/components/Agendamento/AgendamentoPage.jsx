@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import agendamentoService from '../../services/agendamentoService';
 import authService from '../../services/authService';
-import styles from './AgendamentoPage.module.css';
+// Tailwind CSS
+
 import StepService from './StepService';
 import StepDateTime from './StepDateTime';
 import StepConfirm from './StepConfirm';
@@ -69,27 +70,27 @@ const AgendamentoPage = () => {
     const isAdmin = user?.role === 'admin';
 
     return (
-        <div className={styles.container}>
+<div className="min-h-screen flex flex-col bg-bg-light">
             {/* Header */}
-            <header className={styles.header}>
-                <div className={styles.headerContent}>
-                    <Link to="/" className={styles.logo}>
-                        Espaço<span>Beleza</span>
+            <header className="bg-white shadow-sm sticky top-0 z-50">
+                <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+                    <Link to="/" className="font-playfair text-2xl font-bold text-text-main">
+                        Espaço<span className="text-primary">Beleza</span>
                     </Link>
-                    <nav className={styles.nav}>
-                        <Link to="/">Início</Link>
-                        <Link to="/meus-agendamentos">Meus Agendamentos</Link>
-                        {isAdmin && <Link to="/admin/dashboard">Painel Admin</Link>}
+                    <nav className="hidden md:flex gap-8">
+                        <Link to="/" className="font-bold text-text-main hover:text-primary transition-colors">Início</Link>
+                        <Link to="/meus-agendamentos" className="font-bold text-text-main hover:text-primary transition-colors">Meus Agendamentos</Link>
+                        {isAdmin && <Link to="/admin/dashboard" className="font-bold text-text-main hover:text-primary transition-colors">Painel Admin</Link>}
                     </nav>
                     {authService.isAuthenticated() ? (
                         <button
                             onClick={() => { authService.logout(); navigate('/'); }}
-                            className={styles.ctaButton}
+                            className="bg-primary text-white px-6 py-2 rounded-md font-bold hover:bg-primary-hover transition-all"
                         >
                             Sair
                         </button>
                     ) : (
-                        <Link to="/login" className={styles.ctaButton}>
+                        <Link to="/login" className="bg-primary text-white px-6 py-2 rounded-md font-bold hover:bg-primary-hover transition-all">
                             Login
                         </Link>
                     )}
@@ -97,10 +98,10 @@ const AgendamentoPage = () => {
             </header>
 
             {/* Main Content */}
-            <main className={styles.main}>
+            <main className="flex-1 max-w-4xl mx-auto w-full px-6 pb-10 pt-20">
                 <ProgressBar currentStep={currentStep} />
 
-                <div className={styles.contentWrapper}>
+                <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-12 min-h-[500px]">
                     {currentStep === 1 && (
                         <StepService
                             selectedService={formData.service}
@@ -132,26 +133,31 @@ const AgendamentoPage = () => {
             </main>
 
             {/* Footer */}
-            <footer className={styles.footer}>
+            <footer className="bg-text-main text-white/70 py-5 text-center text-sm border-t border-text-main/20">
                 <p>&copy; {new Date().getFullYear()} Espaço Beleza. Todos os direitos reservados.</p>
             </footer>
 
-            {/* Modal de Sucesso */}
+            {/* Success Modal */}
             {showModal && (
-                <div className={styles.modalOverlay}>
-                    <div className={styles.modal}>
-                        <div className={styles.successIcon}>
-                            <i className="fa-solid fa-check"></i>
+                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[1000] flex items-center justify-center p-8 animate-fade-in" onClick={closeModal}>
+                    <div className="bg-white p-8 rounded-3xl shadow-2xl max-w-sm w-full text-center animate-slide-up" onClick={(e) => e.stopPropagation()}>
+                        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i className="fa-solid fa-check text-3xl text-green-500"></i>
                         </div>
-                        <h3>Agendamento Concluído!</h3>
-                        <p>Seu horário foi confirmado com sucesso.</p>
-                        <Link to="/meus-agendamentos" className={styles.btnPrimary} onClick={closeModal}>
+                        <h3 className="font-playfair text-2xl font-bold text-text-main mb-3">Agendamento Concluído!</h3>
+                        <p className="text-text-secondary mb-8">Seu horário foi confirmado com sucesso.</p>
+                        <Link 
+                            to="/meus-agendamentos" 
+                            className="block w-full bg-primary text-white py-4 px-6 rounded-xl font-bold hover:bg-primary-hover transition-all shadow-xl" 
+                            onClick={closeModal}
+                        >
                             Ver Meus Agendamentos
                         </Link>
                     </div>
                 </div>
             )}
         </div>
+
     );
 };
 

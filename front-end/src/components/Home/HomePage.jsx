@@ -11,7 +11,8 @@ import About from './About';
 import Gallery from './Gallery';
 import Testimonials from './Testimonials';
 import Location from './Location';
-import styles from './HomePage.module.css';
+// Tailwind CSS
+
 
 const HomePage = () => {
   const [services, setServices] = useState([]);
@@ -46,15 +47,12 @@ const HomePage = () => {
   };
 
   return (
-    <div className={styles.home}>
+<div className="min-h-screen bg-bg-light">
       <Header />
       <main>
         <Hero />
         
-        <ServicesPreview 
-          services={services} 
-          loading={loadingServices} 
-        />
+        
         
         <About 
           professionals={professionals}
@@ -67,6 +65,7 @@ const HomePage = () => {
       </main>
       <Footer />
     </div>
+
   );
 };
 

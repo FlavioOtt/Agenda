@@ -14,7 +14,8 @@ import GerenciarServicos from './components/Admin/GerenciarServicos';
 import GerenciarProfissionais from './components/Admin/GerenciarProfissionais';
 import Relatorios from './components/Admin/Relatorios';
 import GerenciarClientes from './components/Admin/GerenciarClientes';
-import './App.css';
+// CSS removido - usando Tailwind
+
 
 function App() {
     return (
